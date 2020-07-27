@@ -1,5 +1,5 @@
 FROM openjdk:14.0-jdk-slim
 EXPOSE 8761
 #COPY $path /
-ADD ./spring-boot-eureka-0.0.1-SNAPSHOT.jar  servicio-eureka.jar 
+ADD spring-boot-eureka-0.0.1-SNAPSHOT.jar  servicio-eureka.jar 
 ENTRYPOINT ["java", "-jar", "/servicio-eureka.jar"]
