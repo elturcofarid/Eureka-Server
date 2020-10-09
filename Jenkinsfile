@@ -39,7 +39,7 @@ post {
 
 always {
 echo "-=- remove deployment -=-"
-
+sh "docker ps"
 sh "docker stop eureka-server"
 sh "docker rm eureka-server"
 
