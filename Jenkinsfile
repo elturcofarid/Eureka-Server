@@ -9,37 +9,43 @@ pipeline {
         TEST_CONTAINER_NAME = "ci-${APP_NAME}-${BUILD_NUMBER}"
     }
 
-    stages {
-        stage('Compile') {
-            steps {
-                echo "-=- compiling project -=-"
-                sh "mvn package"
-            }
-        }
+    stages {      
 
         stage('Package') {
             steps {
                 echo "-=- packaging project -=-"
-                 
+                 sh "mvn package"
             }
         }
 
         stage('Build Docker image') {
             steps {
                 echo "-=- build Docker image -=-"
-                
+                sh "docker build -t eureka-server:v10 ."
             }
         }
 
         stage('Run Docker image') {
             steps {
-                echo "-=- run Docker image -=-"
-       
+                echo "-=- run Docker image -=-"  
+                sh "docker run --name eureka-server eureka-server:v1"
             }
         }
 
         
     }
+    
+post {
 
+always {
+echo "-=- remove deployment -=-"
+
+sh "docker stop eureka-server"
+sh "docker rm eureka-server"
+
+}
+
+
+}
     
 }
