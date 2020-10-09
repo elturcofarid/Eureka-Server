@@ -21,6 +21,7 @@ pipeline {
         stage('Build Docker image') {
             steps {
                 echo "-=- build Docker image -=-"
+                sh "ls -l"
                 sh "sudo docker build -t eureka-server:v10 ."
             }
         }
