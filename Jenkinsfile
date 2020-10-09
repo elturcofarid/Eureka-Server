@@ -13,7 +13,7 @@ pipeline {
         stage('Compile') {
             steps {
                 echo "-=- compiling project -=-"
-                sh "./mvnw compile"
+                sh "mvn package"
             }
         }
 
