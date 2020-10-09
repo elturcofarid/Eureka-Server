@@ -21,7 +21,7 @@ pipeline {
         stage('Build Docker image') {
             steps {
                 echo "-=- build Docker image -=-"
-                sh "sudo -S passwd=root docker build -t eureka-server:v10 ."
+                sh "sudo docker build -t eureka-server:v10 ."
             }
         }
 
